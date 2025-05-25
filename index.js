@@ -42,9 +42,9 @@ const {
   const os = require('os')
   const Crypto = require('crypto')
   const path = require('path')
-  const prefix = config.PREFIX
+  const prefix = config♠️PREFIX
 
-  const ownerNumber = ['50948702213']
+  const ownerNumber = ['(829) 925-7576']
   
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
@@ -68,7 +68,7 @@ const {
   //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
 if(!config.SESSION_ID) return console.log('Please add your session to SESSION_ID env !!')
-const sessdata = config.SESSION_ID.replace("MEGALODON~MD~", '');
+const sessdata = config.SESSION_ID.replace("MEGALODON~MD~"MEGALODON~MD~HRZSkJYA#5hYCeHd-cIxhAh9pVOppUNiXHGmiFhDU8Z0U6Dx1McA'');
 const filer = File.fromURL(`https://mega.nz/file/${sessdata}`)
 filer.download((err, data) => {
 if(err) throw err
