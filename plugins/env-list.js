@@ -12,7 +12,7 @@ cmd({
     pattern: "env",
     alias: ["config", "setting"],
     desc: "Show all bot configuration variables (Owner Only)",
-    category: "system",
+    category: "settings",
     react: "⚙️",
     filename: __filename
 }, 
@@ -20,7 +20,7 @@ async (conn, mek, m, { from, quoted, reply, isOwner }) => {
     try {
         // Owner check
         if (!isOwner) {
-            return reply("🚫 *Owner Only Command!* You're not authorized to view bot configurations.");
+            return reply("🚫 *ᴏᴡɴᴇʀ ᴏɴʟʏ ᴄᴏᴍᴍᴀɴᴅ!* ʏᴏᴜ'ʀᴇ ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴛᴏ ᴠɪᴇᴡ ʙᴏᴛ ᴄᴏɴғɪɢᴜʀᴀᴛɪᴏɴs.");
         }
 
         const isEnabled = (value) => value && value.toString().toLowerCase() === "true";
@@ -73,13 +73,13 @@ async (conn, mek, m, { from, quoted, reply, isOwner }) => {
 │  ├─∘ *Anti-Del Path:* ${config.ANTI_DEL_PATH}
 │  └─∘ *Dev Number:* ${config.DEV}
 │
-╰───『 *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴍᴇɢᴀʟᴏᴅᴏɴ ᴍᴅ* 』──❏
+╰─────❏
 `;
 
         await conn.sendMessage(
             from,
             {
-                image: { url: `https://files.catbox.moe/frns4k.jpg` },
+                image: { url: `https://files.catbox.moe/nzc6xk.jpg` },
                 caption: envSettings,
                 contextInfo: {
                     mentionedJid: [m.sender],

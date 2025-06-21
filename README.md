@@ -16,7 +16,7 @@ DONT FORGET TO FORK 🍴 & STAR 🌟 REPO😇
 
 <p align="center">
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=80&pause=1000&color=87CEEB&center=true&vCenter=true&width=1000&height=200&lines=MEGALODON-MD;VERSION+2025;BY+DybyTech" alt="Typing SVG" />
+    <img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=80&pause=1000&color=87CEEB&center=true&vCenter=true&width=1000&height=200&lines=MEGALODON-MD;VERSION+2025;BY+DYBY+TECH" alt="Typing SVG" />
   </a>
 </p>
   
@@ -167,39 +167,64 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 */6 * * *'  
+    - cron: '0 */6 * * *'
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
+  run-node-app:
+    runs-on: ubuntu-22.04  # Utilisation de Ubuntu 22.04 pour plus de stabilité
 
     strategy:
       matrix:
         node-version: [20.x]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: npm install
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: Install FFmpeg
-      run: sudo apt-get install -y ffmpeg
+      - name: Install dependencies
+        run: npm install
 
-    - name: Start application with timeout
-      run: |
-        timeout 21590s npm start  # Limite l'exécution à 5h 59m 50s
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y --fix-missing ffmpeg
 
-    - name: Save state (Optional)
-      run: |
-        ./save_state.sh
+      - name: Start application with auto-restart for 6 hours
+        run: |
+          start_time=$(date +%s)
+          max_duration=$((6 * 3600)) # 6 hours
+
+          while true; do
+            current_time=$(date +%s)
+            elapsed=$((current_time - start_time))
+
+            if [ "$elapsed" -ge "$max_duration" ]; then
+              echo "⏱️ Maximum time reached. Stopping..."
+              break
+            fi
+
+            echo "🚀 Starting application at $(date)"
+            npm start || echo "❌ Application crashed at $(date), restarting..."
+
+            echo "🔁 Restarting in 5 seconds..."
+            sleep 5
+          done
+
+      - name: Save state (Optional)
+        run: ./save_state.sh
 ```
 
 

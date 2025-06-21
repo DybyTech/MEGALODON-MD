@@ -9,28 +9,28 @@ cmd({
     filename: __filename
 }, 
 async (conn, mek, m, { from }) => {
+    const reply = (text) => conn.sendMessage(from, { text }, { quoted: mek });
+
     try {
-        const ownerNumber = config.OWNER_NUMBER; // Fetch owner number from config
-        const ownerName = config.OWNER_NAME;     // Fetch owner name from config
+        const ownerNumber = config.OWNER_NUMBER || '0000000000';
+        const ownerName = config.OWNER_NAME || 'Owner';
 
-        const vcard = 'BEGIN:VCARD\n' +
-                      'VERSION:3.0\n' +
-                      `FN:DybyTech Creator\n` +  
-                      `TEL;type=CELL;type=VOICE;waid=${ownerNumber.replace('+', '')}:${ownerNumber}\n` + 
-                      'END:VCARD';
+        const vcard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${ownerName}
+TEL;type=CELL;type=VOICE;waid=${ownerNumber.replace('+', '')}:${ownerNumber}
+END:VCARD
+        `.trim();
 
-        // Send the vCard
-        const sentVCard = await conn.sendMessage(from, {
+        await conn.sendMessage(from, {
             contacts: {
                 displayName: ownerName,
                 contacts: [{ vcard }]
             }
         });
 
-        // Send the owner contact message with image and audio
-        await conn.sendMessage(from, {
-            image: { url: 'https://files.catbox.moe/5vehos.jpg' }, // Image URL from your request
-            caption: `╭━━〔 𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃 〕━━┈⊷
+        const caption = `╭━━〔 𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃 〕━━┈⊷
 ┃◈╭─────────────·๏
 ┃◈┃• *Here is the owner details*
 ┃◈┃• *Name* - ${ownerName}
@@ -38,7 +38,11 @@ async (conn, mek, m, { from }) => {
 ┃◈┃• *Version*: 1.0.0 Beta
 ┃◈└───────────┈⊷
 ╰──────────────┈⊷
-> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`, // Display the owner's details
+> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`;
+
+        await conn.sendMessage(from, {
+            image: { url: 'https://files.catbox.moe/5vehos.jpg' },
+            caption,
             contextInfo: {
                 mentionedJid: [`${ownerNumber.replace('+', '')}@s.whatsapp.net`], 
                 forwardingScore: 999,
@@ -47,10 +51,9 @@ async (conn, mek, m, { from }) => {
                     newsletterJid: '120363401051937059@newsletter',
                     newsletterName: '𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃',
                     serverMessageId: 143
-                }            
+                }
             }
         }, { quoted: mek });
-        
 
     } catch (error) {
         console.error(error);

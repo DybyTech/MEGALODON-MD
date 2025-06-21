@@ -2,8 +2,7 @@ const { cmd } = require('../command');
 const config = require('../config');
 const prefix = config.PREFIX;
 const fs = require('fs');
-const { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, sleep, fetchJson } = require('../lib/functions2');
-const { writeFileSync } = require('fs');
+const { getBuffer } = require('../lib/functions2'); // Assure-toi que cette fonction récupère bien les buffers via axios
 const path = require('path');
 
 cmd({
@@ -19,10 +18,10 @@ cmd({
         const senderNumber = sender.split('@')[0];
         const botNumber = conn.user.id.split(':')[0];
 
-        const groupMetadata = isGroup ? await conn.groupMetadata(from) : '';
-        const groupAdmins = groupMetadata ? groupMetadata.participants.filter(member => member.admin) : [];
-        const isBotAdmins = isGroup ? groupAdmins.some(admin => admin.id === botNumber + '@s.whatsapp.net') : false;
-        const isAdmins = isGroup ? groupAdmins.some(admin => admin.id === sender) : false;
+        const groupMetadata = await conn.groupMetadata(from);
+        const groupAdmins = groupMetadata.participants.filter(member => member.admin);
+        const isBotAdmins = groupAdmins.some(admin => admin.id === botNumber + '@s.whatsapp.net');
+        const isAdmins = groupAdmins.some(admin => admin.id === sender);
 
         if (!isBotAdmins) return reply("❌ I need to be an admin to fetch the group link.");
         if (!isAdmins) return reply("❌ Only group admins or the bot owner can use this command.");
@@ -45,8 +44,18 @@ cmd({
                          `┃ 👥 *Members:* ${memberCount}\n` +
                          `╰──────────────⬣\n\n> *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴅʏʙʏ ᴛᴇᴄʜ*`;
 
+        let ppUrl;
+        try {
+            ppUrl = await conn.profilePictureUrl(from, 'image');
+        } catch {
+            ppUrl = 'https://telegra.ph/file/6880771a42bad09dd6087.jpg'; // Fallback photo
+        }
+
+        const buffer = await getBuffer(ppUrl);
+
         return conn.sendMessage(from, {
-            text: infoText,
+            image: buffer,
+            caption: infoText,
             mentions: [ownerJid]
         }, { quoted: m });
 
@@ -55,4 +64,3 @@ cmd({
         reply(`⚠️ An error occurred: ${error.message || "Unknown error"}`);
     }
 });
-

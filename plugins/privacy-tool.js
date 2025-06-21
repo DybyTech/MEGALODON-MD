@@ -41,7 +41,7 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
         await conn.sendMessage(
             from,
             {
-                image: { url: `https://files.catbox.moe/rful77.jpg` }, // Replace with privacy-themed image if available
+                image: { url: `https://files.catbox.moe/ot6rrc.jpg` }, // Replace with privacy-themed image if available
                 caption: privacyMenu,
                 contextInfo: {
                     mentionedJid: [m.sender],
@@ -296,32 +296,3 @@ async (conn, mek, m, { from, l, quoted, body, isCmd, command, args, q, isGroup, 
         l(e);
     }
 });
-cmd({
-    pattern: "getpp",
-    desc: "Fetch the profile picture of a tagged or replied user.",
-    category: "owner",
-    filename: __filename
-}, async (conn, mek, m, { quoted, isGroup, sender, participants, reply }) => {
-    try {
-        // Determine the target user
-        const targetJid = quoted ? quoted.sender : sender;
-
-        if (!targetJid) return reply("⚠️ Please reply to a message to fetch the profile picture.");
-
-        // Fetch the user's profile picture URL
-        const userPicUrl = await conn.profilePictureUrl(targetJid, "image").catch(() => null);
-
-        if (!userPicUrl) return reply("⚠️ No profile picture found for the specified user.");
-
-        // Send the user's profile picture
-        await conn.sendMessage(m.chat, {
-            image: { url: userPicUrl },
-            caption: "🖼️ Here is the profile picture of the specified user."
-        });
-    } catch (e) {
-        console.error("Error fetching user profile picture:", e);
-        reply("❌ An error occurred while fetching the profile picture. Please try again later.");
-    }
-});
-
-          
