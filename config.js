@@ -11,7 +11,7 @@ function convertToBool(text, fault = 'true') {
 
 
 module.exports = {
-SESSION_ID: process.env.SESSION_ID || "put your session id here",
+SESSION_ID: process.env.SESSION_ID || "MEGALODON~MD~QdQxUD4R#YIcIHs-v5WfcJC8sZiXlvD_dW_l_mdVhixNnSfUL9x0",
 // add your Session Id 
 REJECT_MSG: process.env.REJECT_MSG || "*📞 ᴄαℓℓ ɴσт αℓℓσωє∂ ιɴ тнιѕ ɴᴜмвєʀ уσυ ∂σɴт нανє ᴘєʀмιѕѕισɴ 📵*",
 // msg anticall
