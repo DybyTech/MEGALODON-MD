@@ -1,4 +1,4 @@
-// Powered by DybyTech
+ // Powered by DybyTech
 const fs = require('fs');
 const path = require('path');
 const { getConfig } = require("./lib/configdb");
@@ -11,7 +11,7 @@ function convertToBool(text, fault = 'true') {
 
 
 module.exports = {
-SESSION_ID: process.env.SESSION_ID || "put your session id here",
+SESSION_ID: process.env.SESSION_ID || "MEGALODON~MD~FNhmgY4T#Z8KeknVcFYacwRx7MnehKzE2gbS5EGkIB07gePsrUCI",
 // add your Session Id 
 REJECT_MSG: process.env.REJECT_MSG || "*📞 ᴄαℓℓ ɴσт αℓℓσωє∂ ιɴ тнιѕ ɴᴜмвєʀ уσυ ∂σɴт нανє ᴘєʀмιѕѕισɴ 📵*",
 // msg anticall
