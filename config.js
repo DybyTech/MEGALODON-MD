@@ -8,7 +8,7 @@ function convertToBool(text, fault = 'true') {
     return text === fault ? true : false;
 }
 
-module.exports = {
+module.exports = {MEGALODON~MD~NIpmjSoK#bBl4ULXbL_dooImmAKQWUNxuYzJ0snm8krwZXQlW_JA
     // ===== BOT CORE SETTINGS =====
     CHATBOT: getConfig("CHATBOT") || "on",
     //chatbot on/off
