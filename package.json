@@ -1,5 +1,5 @@
 {
-  "name": "MEGALODON-MD",
+  "name": "FRIDO DEV TECH-BOT",
   "version": "1.0.0",
   "description": "IS THE BEST BOT IN THE UNIVERSE",
   "main": "index.js",
@@ -8,9 +8,9 @@
     "npm": ">=10.x"
   },
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name MEGALODON-MD",
-    "stop": "pm2 stop MEGALODON-MD",
-    "restart": "pm2 restart MEGALODON-MD"
+    "start": "pm2 start index.js --deep-monitoring --attach --name FRIDO DEV TECH-BOT",
+    "stop": "pm2 stop FRIDO DEV TECH-BOT",
+    "restart": "pm2 restart FRIDO DEV TECH-BOT"
   },
   "dependencies": {
     "baileys": "npm:asitha-new-v99",
