@@ -1,8 +1,8 @@
 {
-  "name": "MEGALODON-MD",
+  "name": "FRIDO DEV TECH-BOT",
   "description": "Javascript WhatsApp bot made by ᴅʏʙʏ ᴛᴇᴄʜ",
   "logo": "https://files.catbox.moe/frns4k.jpg",
-  "keywords": ["MEGALODON-MD"],
+  "keywords": ["FRIDO DEV TECH-BOT"],
   "success_url": "/",
 
     "stack": "container",
@@ -16,7 +16,7 @@
     "STICKER_NAME": {
       "description": "type your sticker pack name.",
       "required": false,
-      "value": "MEGALODON-MD"
+      "value": "FRIDO DEV TECH-BOT"
     }, 
       
     "PREFIX": {
@@ -78,7 +78,7 @@
     "AUTO_STATUS_MSG": {
       "description": "Type custom message on status reply",
       "required": true,
-      "value": "*SEEN YOUR STATUS BY MEGALODON-MD 🥶*"
+      "value": "*SEEN YOUR STATUS BY FRIDO DEV TECH-BOT 🥶*"
    
      }, 
     
@@ -98,7 +98,7 @@
     "BOT_NAME": {
       "description": "Type here the bot name.",
       "required": false,
-      "value": "MEGALODON-MD"
+      "value": "FRIDO DEV TECH-BOT"
 
       }, 
 
