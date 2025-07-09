@@ -17,6 +17,6 @@ services:
       - key: PREFIX
         value: .
       - key: BOT_NAME
-        value: MEGALODON-MD
+        value: FRIDO DEV TECH BOT
       - key: OWNER_NUMBER
         value: 50948336180
