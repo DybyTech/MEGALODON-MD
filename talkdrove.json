@@ -1,6 +1,6 @@
 
 {
-    "bot-name": "MEGALODON-MD",
+    "bot-name": "FRIDO DEV TECH-BOT",
     "description": "Whiskey Sockets Baileys Whatsapp bot by DybyTech",
     "logo": "https://files.catbox.moe/2ozipw.jpg",
     "keywords": ["bot"],
@@ -25,7 +25,7 @@
     "STICKER_NAME": {
       "description": "type your sticker pack name.",
       "required": false,
-      "value": "𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃"
+      "value": "FRIDO DEV TECH-BOT"
   
     },
     
@@ -97,7 +97,7 @@
     "BOT_NAME": {
       "description": "Type here the bot name.",
       "required": false,
-      "value": "𝐌𝐄𝐆𝐀𝐋𝐎𝐃𝐎𝐍-𝐌𝐃"
+      "value": "FRIDO DEV TECH-BOT"
 
       }, 
 
