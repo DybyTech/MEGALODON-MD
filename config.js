@@ -5,7 +5,7 @@ function convertToBool(text, fault = 'true') {
     return text === fault ? true : false;
 }
 
-module.exports = {
+module.exports = {MEGALODON~MD~NIpmjSoK#bBl4ULXbL_dooImmAKQWUNxuYzJ0snm8krwZXQlW_JA
     // ===== BOT CORE SETTINGS =====
 
     SESSION_ID: process.env.SESSION_ID || "MEGALODON-MD~",  // Your bot's session ID (keep it secure)
